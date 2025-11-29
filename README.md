@@ -81,30 +81,29 @@ app/
 ## Running the Project
 
 ### 1. Clone the repository
-    ```bash
+    
         git clone https://github.com/dipesh1dp/askpdf.git
         cd askpdf
-    ```
+    
 
 ### 2. Create & activate a virtual environment (recommended)
-    ```bash
+    
         python -m venv venv
         source venv/bin/activate     # macOS / Linux
         venv\Scripts\activate        # Windows
-    ```
+    
 
 ### 3. Install dependencies
 
-    ```bash
+    
         pip install -r requirements.txt
-    ```
+
 
 ### 4. Run FastAPI
 
-    ```bash
         uvicorn app.main:app --reload
 
-    ```
+
 
 ### 5. Visit API docs:
    **[http://localhost:8000/docs](http://localhost:8000/docs)**
