@@ -28,16 +28,3 @@ class Document(Base):
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE")) 
 
     owner: Mapped[User] = relationship(back_populates="documents")
-
-
-class ChatMemory(Base):
-    __tablename__ = "chat_memory" 
-
-    id: Mapped[int] = mapped_column(primary_key=True, index=True) 
-    user_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"))
-    user_query: Mapped[str] = mapped_column(nullable=False) 
-    agent_response: Mapped[str] = mapped_column(nullable=False) 
-    timestamp: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
-
-    user: Mapped[User] = relationship(back_populates="chats")
-
