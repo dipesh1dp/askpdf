@@ -106,7 +106,7 @@ app/
 
 
 ### 5. Visit API docs:
-   **[http://localhost:8000/docs](http://localhost:8000/docs)**
+        [http://localhost:8000/docs](http://localhost:8000/docs)
 
 ---
 
