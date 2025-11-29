@@ -1,0 +1,6 @@
+__pycache__/
+uploaded_files/
+.vscode/
+up
+.env
+*.ipynb
