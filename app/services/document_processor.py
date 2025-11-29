@@ -81,6 +81,4 @@ def load_documents(file_path: str) -> list[Document]:
     return process_document(file_path)
 
 
-# Example usage:
-# docs = load_documents("sample.pdf")
 

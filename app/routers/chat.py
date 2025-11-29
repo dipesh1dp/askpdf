@@ -17,14 +17,15 @@ async def chat(
     payload: schemas.ChatRequest,
     current_user: int = Depends(get_current_user)
 ):
-    # Create initial state with user_id
+    # Create initial state 
     state = {
         "messages": [HumanMessage(content=payload.query)],
     }
+    # Create config with current user id as thread_id
     config = {"configurable": {"thread_id": current_user.id}}   
 
 
-    # Run graph with thread_id for memory persistence
+    # Run graph with conifg for memory persistence
     result = await graph.ainvoke(
         state,
         config=config
