@@ -7,14 +7,15 @@ Supports **PDF and TXT uploads**, including **OCR extraction via Tesseract**.
 
 ## Features
 
-* **FastAPI backend** with clean modular architecture
-* **FAISS vector store** for efficient similarity search
-* **LangGraph agent pipeline** for orchestrating RAG steps
-* **PostgreSQL** as the primary database
-* **JWT-based authentication & user management**
-* **Document upload support (PDF, TXT)**
-* **Tesseract OCR** for extracting text from scanned PDFs
-* **Simple and extendable service layer design**
+* Asynchronous FastAPI backend with clean modular architecture and dependency injection
+* FAISS vector store for efficient similarity search
+* LangGraph agent pipeline for orchestrating RAG steps
+* RecursiveCharacterTextSplitter from LangChain for chunking documents
+* PostgreSQL as the primary database
+* JWT-based authentication & user management
+* Document upload support (PDF, TXT)
+* Tesseract OCR for extracting text from scanned PDFs
+* Simple and extendable service layer design
 
 ---
 
@@ -52,18 +53,20 @@ app/
 ### **1. Document Processing**
 
 * Handles PDF/TXT upload
-* Uses **Tesseract OCR** when PDF contains images
-* Prepares clean text for chunking and embedding
+* Uses Tesseract OCR when PDF contains images
+* Extracted text is chunked using LangChain RecursiveCharacterTextSplitter for optimal RAG performance
 
 ### **2. Vector Store**
 
-* Uses **FAISS** for fast approximate nearest-neighbor search
+* Uses FAISS for fast approximate nearest-neighbor search
 * Stores embeddings for all uploaded documents
 
 ### **3. LangGraph Agent**
 
 * Manages RAG workflow
 * Defines retrieval → reasoning → response generation graph
+* Uses LangGraph MemorySaver for storing intermediate state per user
+* Each user session uses user_id as the thread identifier, ensuring isolated and persistent RAG state per user
 
 ### **4. Authentication**
 
