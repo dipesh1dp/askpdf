@@ -3,7 +3,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 
 from .routers import chat, login, upload_document, user
-from .database import init_db
 
 
 
@@ -11,23 +10,23 @@ from .database import init_db
 async def lifespan(app: FastAPI): 
     # Startup 
     print("Starting up...") 
-    # Initalize database
-    await init_db() 
     print("Ready") 
     yield 
     print("Shutting down...")
 
 
 app = FastAPI(
-    title= "RAG QA Chatbot API",
-    description="Simple RAG based Question Answering Chatbot", 
-    version="1.0.0",
+    title= "AskPDF chatbot API",
+    description="Simple RAG based Question Answering Chatbot for PDF/TXT files", 
+    version="1.0.1",
     lifespan=lifespan
 )
 
 
-
 # CORS 
+origins = []
+
+ 
 
 
 # Include routers 
@@ -40,7 +39,7 @@ app.include_router(user.router)
 @app.get("/") 
 async def read_root():
     return {
-        "message": "RAG QA Chatbot",
+        "message": "AskPDF is running",
         "docs": "/docs"
     }
  

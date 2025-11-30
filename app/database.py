@@ -36,10 +36,12 @@ async def get_db():
             await session.rollback() # In case of error, rollback the transaction
             raise
 
-        
-async def init_db():
-    """Initialize database tables"""
-    from .models import Base
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
+# If not using alembic. 
+# Call init_db() in lifespan in main.py
+# async def init_db():
+#     """Initialize database tables"""
+#     from .models import Base
+#     async with engine.begin() as conn:
+#         await conn.run_sync(Base.metadata.create_all)
+
 

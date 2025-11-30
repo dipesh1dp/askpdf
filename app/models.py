@@ -15,7 +15,6 @@ class User(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
     documents: Mapped[List["Document"]] = relationship(back_populates="owner", cascade="all, delete-orphan")
-    chats: Mapped[List["ChatMemory"]] = relationship(back_populates="user", cascade="all, delete-orphan")
 
 
 class Document(Base): 
