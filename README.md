@@ -11,7 +11,11 @@ Supports **PDF and TXT uploads**, including **OCR extraction via Tesseract**.
 * FAISS vector store for efficient similarity search
 * LangGraph agent pipeline for orchestrating RAG steps
 * RecursiveCharacterTextSplitter from LangChain for chunking documents
+<<<<<<< HEAD
 * PostgreSQL as the primary database, Alembic as database migration tool
+=======
+* PostgreSQL as the primary database, Alembic as database migration tool.
+>>>>>>> 405a01eb7837c499f646171198555a6ddbf92651
 * JWT-based authentication & user management
 * Document upload support (PDF, TXT)
 * Tesseract OCR for extracting text from scanned PDFs
