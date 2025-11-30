@@ -109,7 +109,8 @@ app/
 
 
 ### 5. Visit API docs:
-        [http://localhost:8000/docs](http://localhost:8000/docs)
+
+  [http://localhost:8000/docs](http://localhost:8000/docs)
 
 ---
 
@@ -130,15 +131,6 @@ Automatic OCR runs for image-based PDFs using Tesseract.
 * `/login` → get JWT token
 * Protected routes require:
   `Authorization: Bearer <token>`
-
----
-
-## RAG Pipeline
-
-1. Upload → process → chunk
-2. Embed chunks
-3. Store embeddings in FAISS
-4. LangGraph agent retrieves & generates answers
 
 ---
 
