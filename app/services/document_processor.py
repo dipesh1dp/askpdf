@@ -1,26 +1,31 @@
-# document_processor.py
-
-import pytesseract
+import fitz 
 from pathlib import Path
 from pdf2image import convert_from_path
-from langchain_community.document_loaders import PyPDFLoader
+import pytesseract
 from langchain_core.documents import Document
 from ..config import settings
 
 
-
 def extract_pdf_text(file_path: str) -> list[Document]:
-    """Extract text from a PDF using PyPDFLoader"""
-    loader = PyPDFLoader(file_path)
-    docs = loader.load()
-    return docs
+    """Extract text from a PDF using PyMuPDF"""
+    doc = fitz.open(file_path)
+    documents = []
+
+    for i, page in enumerate(doc):
+        text = page.get_text("text")
+        documents.append(
+            Document(
+                page_content=text,
+                metadata={"source": file_path, "page": i + 1}
+            )
+        )
+    return documents
 
 
 def extract_pdf_ocr(file_path: str) -> list[Document]:
     """Extract text from a scanned PDF using OCR"""
     print("OCR: Processing scanned PDF...")
-    images = convert_from_path(file_path, 
-                               poppler_path=settings.poppler_path)
+    images = convert_from_path(file_path, poppler_path=settings.poppler_path)
 
     documents = []
     for i, img in enumerate(images):
@@ -79,6 +84,3 @@ def process_document(file_path: str) -> list[Document]:
 def load_documents(file_path: str) -> list[Document]:
     """Load and process a document based on its type"""
     return process_document(file_path)
-
-
-

@@ -1,26 +1,25 @@
 # AskPDF
 
-A lightweight, modular Retrieval-Augmented Generation (RAG) backend built with **FastAPI**, **FAISS**, **LangGraph**, **PostgreSQL**, and **JWT authentication**.
-Supports **PDF and TXT uploads**, including **OCR extraction via Tesseract**.
+A lightweight, modular Retrieval-Augmented Generation chatbot where users can upload PDFs and ask natural-language questions and get context-aware answers grounded in the document.
+
+Supports PDF and TXT uploads, including OCR extraction via Tesseract.
 
 ---
 
+## Demo
+![Demo](assets/askpdf-demo.gif)
+
 ## Features
 
-* Asynchronous FastAPI backend with clean modular architecture and dependency injection
-* FAISS vector store for efficient similarity search
-* LangGraph agent pipeline for orchestrating RAG steps
-* RecursiveCharacterTextSplitter from LangChain for chunking documents
-<<<<<<< HEAD
-* PostgreSQL as the primary database, Alembic as database migration tool
-=======
-* PostgreSQL as the primary database, Alembic as database migration tool.
->>>>>>> 405a01eb7837c499f646171198555a6ddbf92651
-* JWT-based authentication & user management
 * Document upload support (PDF, TXT)
 * Tesseract OCR for extracting text from scanned PDFs
-* Simple and extendable service layer design
+* RecursiveCharacterTextSplitter from LangChain for chunking documents
+* FAISS vector store for efficient similarity search
+* LangGraph agent pipeline for orchestrating RAG steps
+* Asynchronous FastAPI backend dependency injection, JWT-based authentication & user management
+* PostgreSQL as the primary database, Alembic as database migration tool
 
+![Workflow](assets/askpdf.png)
 ---
 
 ## Project Structure
